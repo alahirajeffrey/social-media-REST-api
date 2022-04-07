@@ -13,7 +13,7 @@ REST api for a social media app using nodejs
 - [Postman](https://www.postman.com/downloads/) is an API client that makes it easy for developers to create, share, test and document APIs. This is done by allowing users to create and save simple and complex HTTP/s requests, as well as read their responses. The result - more efficient and less tedious work.
 
 ### Installation Guide
-* Clone this repository [here](https://github.com/alahirajeffrey/social-media-REST-api.git).
+* Clone this repository using `git clone https://github.com/alahirajeffrey/social-media-REST-api.git`
 * Run `npm install` to install all dependencies. Ensure you have node and npm installed.
 * Ensure you have mongodb installed and running locally on your computer or you could use atlas
 * Create an .env file in your project root folder and add your variables. Ensure you add your database connection string. See .env.sample for assistance.
@@ -25,9 +25,19 @@ REST api for a social media app using nodejs
 ### API Endpoints
 | HTTP Verbs | Endpoints | Action | Required |
 | --- | --- | --- | --- |
-| POST | /api/url/shorten | To shorten a url | req.body.longUrl |
-| GET | /api/url/getAll | To retrieve all urls | |
-| GET | /api/url/getOne | redirect to long url using id | req.body.id |
+| POST | /api/auth/register | Register a new user | req.body.username req.body.password req.body.email |
+| GET | /api/auth/login | Login existing user | req.body.username  req.body.password req.body.email |
+| PUT | /api/users/:id | Update user | req.body.username  req.body.password req.body.email req.params.id |
+| DELETE | /api/users/:id | Delete user | req.params.id |
+| GET | /api/users | Get user | req.params.id |
+| PUT | /api/users/:id/follow | Follow a user | req.body.userId req.params.id |
+| PUT | /api/users/:id/unfollow | Unfollow a user | req.body.userId req.params.id |
+| POST | /api/posts/ | Make a post | req.body.userId req.body.desc |
+| PUT | /api/posts/:id | Update a post | req.body.id req.body.desc |
+| DELETE | /api/posts/:id | Delete a post | req.params.id |
+| GET | /api/posts/id | Get a post | req.params.desc |
+| PUT | /api/posts/:id/like | Update a post | req.params.id |
+| GET | /api/posts/:id/like | Get all posts | req.body.UserId |
 
 ### Author(s)
 * [Alahira Jeffrey](https://github.com/alahirajeffrey)
